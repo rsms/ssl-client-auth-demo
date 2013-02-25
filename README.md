@@ -26,7 +26,7 @@ Grab this code and follow these steps to try it out. You will need an installati
 
 **Step 6.** Start the demo web server by going to the root directory of this project and:
 
-    node server.js
+    $ node server.js
     Listening at https://ssl-client-auth:1337/
 
 Now open [https://ssl-client-auth:1337/](https://ssl-client-auth:1337/) in a modern web browser like Chrome or Safari.
