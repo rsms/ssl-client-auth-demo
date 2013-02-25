@@ -19,6 +19,8 @@ Some output here...
 
 **Step 3.** Import our demo CA certificate into your OS's keychain. If you are using Apple OS X, simply double-click the "ca.crt" file in the "ssl" directory. This should open the Keychain Access app and ask you if you really want to import this certificate. Answer "Always Trust".
 
+> In a real-world application, step 1 through 2 would be done by a real CA which certificate is already installed and shipped with major web browsers and operating systems, such as through VeriSign Trust Network.
+
 **Step 4.** Generate a new client certificate. Intheory, this is what you will do for every user that is granted access to whatever you are protecting. Still in a terminal in the ssl directory, do this and enter some user identifier when asked:
 
 ```sh
