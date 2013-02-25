@@ -33,14 +33,16 @@ Now open [https://ssl-client-auth:1337/](https://ssl-client-auth:1337/) in a mod
 
 Depending on which browser you use the user interface for chosing an identity will be different. For instance, Safari will first present a list of known and applicable identities and ask you to pick yours. Here you want to pick the one which has the same name as you entered for "user ID" when running the `gen-client.sh` script. Next Safari will ask you for access to the private key. Answer "Always Allow". You should see something like this if everything worked:
 
-    { "status": "approved",
-      "peer_cert": {
-        "subject": "O=Lolcats Inc\nOU=Administration\nCN=rsms",
-        "issuer": "O=Lolcats Inc\nOU=Administration\nCN=Lolcats CA",
-        "valid_from": "Feb 25 09:08:25 2013 GMT",
-        "valid_to": "Feb 25 09:08:25 2014 GMT",
-        "fingerprint": "79:03:74:DD:34:3C:41:44:15:6C:94:2D:76:CB:BE:76:FB:B9:92:12"
-    } }
+```json
+{ "status": "approved",
+  "peer_cert": {
+    "subject": "O=Lolcats Inc\nOU=Administration\nCN=rsms",
+    "issuer": "O=Lolcats Inc\nOU=Administration\nCN=Lolcats CA",
+    "valid_from": "Feb 25 09:08:25 2013 GMT",
+    "valid_to": "Feb 25 09:08:25 2014 GMT",
+    "fingerprint": "79:03:74:DD:34:3C:41:44:15:6C:94:2D:76:CB:BE:76:FB:B9:92:12"
+} }
+```
 
 ----
 
