@@ -12,22 +12,28 @@ Grab this code and follow these steps to try it out. You will need an installati
 
 **Step 2.** In a terminal, go to the `ssl` directory that comes with this example and run gen-server.sh:
 
-    $ cd ssl && ./gen-server.sh
-    Some output here...
+```sh
+$ cd ssl && ./gen-server.sh
+Some output here...
+```
 
 **Step 3.** Import our demo CA certificate into your OS's keychain. If you are using Apple OS X, simply double-click the "ca.crt" file in the "ssl" directory. This should open the Keychain Access app and ask you if you really want to import this certificate. Answer "Always Trust".
 
 **Step 4.** Generate a new client certificate. Intheory, this is what you will do for every user that is granted access to whatever you are protecting. Still in a terminal in the ssl directory, do this and enter some user identifier when asked:
 
-    $ ./gen-client.sh
-    Enter a user ID (e.g. john_s or 1234): rsms
+```sh
+$ ./gen-client.sh
+Enter a user ID (e.g. john_s or 1234): rsms
+```
 
 **Step 5.** Import the client certificate into your OS's keychain. If you are using Apple OS X, simply double-click the "client-youruserid.crt" file in the "ssl" directory. This should open the Keychain Access app and ask you to enter a password to unlock the file. Enter "hello" (this password was set by the gen-client.sh script.)
 
 **Step 6.** Start the demo web server by going to the root directory of this project and:
 
-    $ node server.js
-    Listening at https://ssl-client-auth:1337/
+```sh
+$ node server.js
+Listening at https://ssl-client-auth:1337/
+```
 
 Now open [https://ssl-client-auth:1337/](https://ssl-client-auth:1337/) in a modern web browser like Chrome or Safari.
 
@@ -48,14 +54,16 @@ Depending on which browser you use the user interface for chosing an identity wi
 
 Using curl:
 
-    $ curl --insecure https://ssl-client-auth:1337
-    { "status": "denied" }
-    $ curl --insecure \
-      --key ssl/client-yourname.pem --cert ssl/client-yourname.crt \
-      https://ssl-client-auth:1337
-    {
-      "status": "approved",
-      "peer_cert": {
-        "subject": "O=Lolcats Inc\nOU=Administration\nCN=rsms",
-        "user_id": "rsms"
-    ...
+```sh
+$ curl --insecure https://ssl-client-auth:1337
+{ "status": "denied" }
+$ curl --insecure \
+  --key ssl/client-yourname.pem --cert ssl/client-yourname.crt \
+  https://ssl-client-auth:1337
+{
+  "status": "approved",
+  "peer_cert": {
+    "subject": "O=Lolcats Inc\nOU=Administration\nCN=rsms",
+    "user_id": "rsms"
+...
+```
