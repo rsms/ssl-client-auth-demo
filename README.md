@@ -21,7 +21,7 @@ Some output here...
 
 > In a real-world application, step 1 through 3 would be done by a real CA which certificate is already installed and shipped with major web browsers and operating systems, such as through VeriSign Trust Network.
 
-**Step 4.** Generate a new client certificate. Intheory, this is what you will do for every user that is granted access to whatever you are protecting. Still in a terminal in the ssl directory, do this and enter some user identifier when asked:
+**Step 4.** Generate a new client certificate. In theory, this is what you will do for every user that is granted access to whatever you are protecting. Still in a terminal in the ssl directory, do this and enter some user identifier when asked:
 
 ```sh
 $ ./gen-client.sh
