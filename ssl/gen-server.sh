@@ -23,7 +23,7 @@ openssl pkcs12 -export -clcerts -inkey ca.pem -in ca.crt -out ca.p12 \
 openssl genrsa -out server.pem 1024 > /dev/null
 
 openssl req -new -key server.pem -out server.csr \
-  -subj "/O=Rippling Inc/OU=Administration/CN=app.rippling.com/subjectAltName=DNS.1=app.rippling.com" >/dev/null
+  -subj "/O=Rippling Inc/OU=Administration/CN=test.rippling.com/subjectAltName=DNS.1=test.rippling.com" >/dev/null
 
 # We're self signing our own server cert here.
 # Hey, this is a no-no outside of experiments.

@@ -29,6 +29,6 @@ https.createServer(options, function (req, res) {
     response = {status: 'denied'};
   }
   res.end(JSON.stringify(response, null, 2));
-}).listen(443, 'app.rippling.com', function () {
-  console.log('Listening at https://app.rippling.com:443/');
+}).listen(8443, 'test.rippling.com', function () {
+  console.log('Listening at https://test.rippling.com:8443/');
 });
