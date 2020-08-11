@@ -28,7 +28,7 @@ $ ./gen-client.sh
 Enter a user ID (e.g. john_s or 1234): rsms
 ```
 
-**Step 5.** Import the client certificate into your OS's keychain. If you are using Apple OS X, simply double-click the "client-youruserid.crt" file in the "ssl" directory. This should open the Keychain Access app and ask you to enter a password to unlock the file. Enter "hello" (this password was set by the gen-client.sh script.)
+**Step 5.** Import the client certificate into your OS's keychain. If you are using Apple OS X, simply double-click the "client-youruserid.p12" file in the "ssl" directory. This should open the Keychain Access app and ask you to enter a password to unlock the file. Enter "hello" (this password was set by the gen-client.sh script.)
 
 **Step 6.** Start the demo web server by going to the root directory of this project and:
 
