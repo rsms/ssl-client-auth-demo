@@ -13,17 +13,17 @@ openssl genrsa -out ca.pem 4096
 
 echo NmNTNA9idsq4iuzH | \
   openssl req -new -x509 -days 365 -key ca.pem -out ca.crt \
-  -subj "/O=Lolcats Inc/OU=Administration/CN=Lolcats CA" \
+  -subj "/O=Rippling Inc/OU=Administration/CN=Rippling X509 CA" \
   -passin pass:stdin > /dev/null
 
 openssl pkcs12 -export -clcerts -inkey ca.pem -in ca.crt -out ca.p12 \
-  -name "Lolcats CA" -passout pass:hello > /dev/null
+  -name "Rippling X509 CA" -passout pass:hello > /dev/null
 
 # Create the Server Key, CSR, and Certificate
 openssl genrsa -out server.pem 1024 > /dev/null
 
 openssl req -new -key server.pem -out server.csr \
-  -subj "/O=Lolcats Inc/OU=Administration/CN=ssl.client.auth/subjectAltName=DNS.1=ssl.client.auth" >/dev/null
+  -subj "/O=Rippling Inc/OU=Administration/CN=app.rippling.com/subjectAltName=DNS.1=app.rippling.com" >/dev/null
 
 # We're self signing our own server cert here.
 # Hey, this is a no-no outside of experiments.
@@ -32,7 +32,7 @@ openssl x509 -req -days 365 -in server.csr -CA ca.crt -CAkey ca.pem \
   -set_serial 01 -out server.crt > /dev/null
 
 openssl pkcs12 -export -clcerts -inkey server.pem -in server.crt \
-  -out server.p12 -name "Lolcats Inc" -passout pass: > /dev/null
+  -out server.p12 -name "Rippling Inc" -passout pass: > /dev/null
 
 popd >/dev/null
 mv -f .gentmp/*.pem .gentmp/*.crt .gentmp/*.p12 .

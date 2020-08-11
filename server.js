@@ -19,6 +19,8 @@ https.createServer(options, function (req, res) {
     var peer_cert = res.connection.getPeerCertificate();
     peer_cert.user_id = peer_cert.subject.CN;
     console.log('Serving authorized user "' + peer_cert.user_id + '"');
+    // oauth_token  = request.post('localhost:8000/login_with_cert', payload)
+    // setCookie('Authorization Bearer:', oauth_token);
     res.writeHead(200, {"Content-Type": "application/json"});
     response = {status: 'approved', peer_cert: peer_cert};
   } else {
@@ -27,6 +29,6 @@ https.createServer(options, function (req, res) {
     response = {status: 'denied'};
   }
   res.end(JSON.stringify(response, null, 2));
-}).listen(1337, 'ssl.client.auth', function () {
-  console.log('Listening at https://ssl.client.auth:1337/');
+}).listen(443, 'app.rippling.com', function () {
+  console.log('Listening at https://app.rippling.com:443/');
 });
