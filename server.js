@@ -16,8 +16,8 @@ https.createServer(options, function (req, res) {
   if (req.client.authorized) {
     // This happens when the client's certificate was validated against the
     // certificate chain.
-    var peer_cert = req.client.pair.ssl.getPeerCertificate();
-    peer_cert.user_id = peer_cert.subject.match(/CN=(.+)/m)[1];
+    var peer_cert = res.connection.getPeerCertificate();
+    peer_cert.user_id = peer_cert.subject.CN;
     console.log('Serving authorized user "' + peer_cert.user_id + '"');
     res.writeHead(200, {"Content-Type": "application/json"});
     response = {status: 'approved', peer_cert: peer_cert};
@@ -27,6 +27,6 @@ https.createServer(options, function (req, res) {
     response = {status: 'denied'};
   }
   res.end(JSON.stringify(response, null, 2));
-}).listen(1337, 'ssl-client-auth', function () {
-  console.log('Listening at https://ssl-client-auth:1337/');
+}).listen(1337, 'ssl.client.auth', function () {
+  console.log('Listening at https://ssl.client.auth:1337/');
 });

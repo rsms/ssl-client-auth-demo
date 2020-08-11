@@ -23,7 +23,7 @@ openssl pkcs12 -export -clcerts -inkey ca.pem -in ca.crt -out ca.p12 \
 openssl genrsa -out server.pem 1024 > /dev/null
 
 openssl req -new -key server.pem -out server.csr \
-  -subj "/O=Lolcats Inc/OU=Administration/CN=ssl-client-auth" >/dev/null
+  -subj "/O=Lolcats Inc/OU=Administration/CN=ssl.client.auth/subjectAltName=DNS.1=ssl.client.auth" >/dev/null
 
 # We're self signing our own server cert here.
 # Hey, this is a no-no outside of experiments.
