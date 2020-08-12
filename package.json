@@ -1,0 +1,24 @@
+{
+  "name": "ssl-client-auth-demo",
+  "version": "1.0.0",
+  "description": "This demonstrates [Client-authenticated TLS handshake](http://en.wikipedia.org/wiki/Transport_Layer_Security#Client-authenticated_TLS_handshake) which allows you to sign in without the use of passwords or e.g. email roundtrips, plus it allows to \"uniquely identify yourself to third-party websites without giving the second party any account information\" [(Hofstetter 2008)](http://pilif.github.com/2008/05/why-is-nobody-using-ssl-client-certificates/). All of this using already existing infrastructure built in to all major web browsers.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthikselva/ssl-client-auth-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karthikselva/ssl-client-auth-demo/issues"
+  },
+  "homepage": "https://github.com/karthikselva/ssl-client-auth-demo#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "request": "^2.81.0"
+  }
+}

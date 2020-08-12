@@ -4,3 +4,4 @@ ssl/*.crt
 ssl/*.csr
 ssl/*.p12
 ssl/*.pem
+node_modules/*

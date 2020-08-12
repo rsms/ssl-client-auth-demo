@@ -1,6 +1,25 @@
 'use strict';
 var https = require('https');
 var fs = require('fs');
+const request = require('request');
+const axios = require('axios');
+
+const url = "http://127.0.0.1:8000/hardware/x509/login_with_cert/";
+
+async function doLoginViaCert(certificate) {
+  try {
+    const response = await axios.get(url , {
+      params: {
+        'certificate': certificate
+      }
+    });
+    return response;
+  } catch (error) {
+    console.log('Some error happened');
+    console.log(error);
+    return error;
+  }
+};
 
 var options = {
   key:  fs.readFileSync('ssl/server.pem'),
@@ -11,7 +30,7 @@ var options = {
   rejectUnauthorized:   false,
 };
 
-https.createServer(options, function (req, res) {
+https.createServer(options, async function (req, res) {
   var response;
   if (req.client.authorized) {
     // This happens when the client's certificate was validated against the
@@ -19,6 +38,7 @@ https.createServer(options, function (req, res) {
     var peer_cert = res.connection.getPeerCertificate();
     peer_cert.user_id = peer_cert.subject.CN;
     console.log('Serving authorized user "' + peer_cert.user_id + '"');
+    const backend_response = await doLoginViaCert(peer_cert);
     // oauth_token  = request.post('localhost:8000/login_with_cert', payload)
     // setCookie('Authorization Bearer:', oauth_token);
     res.writeHead(200, {"Content-Type": "application/json"});
